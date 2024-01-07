@@ -115,7 +115,7 @@ class HostCleanup:
       else:
         raise Exception("No config found, use default")
 
-    except Exception, err:
+    except (Exception, err):
       logger.warn(err)
     return config
 

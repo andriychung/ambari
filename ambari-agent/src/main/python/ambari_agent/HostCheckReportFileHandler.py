@@ -54,7 +54,7 @@ class HostCheckReportFileHandler:
       else:
         raise Exception("No config found, use default")
 
-    except Exception, err:
+    except (Exception, err):
       logger.warn(err)
     return config
     
@@ -83,7 +83,7 @@ class HostCheckReportFileHandler:
       self.touchFile(self.hostCheckCustomActionsFilePath)
       with open(self.hostCheckCustomActionsFilePath, 'wb') as configfile:
         config.write(configfile)
-    except Exception, err:
+    except (Exception, err):
       logger.error("Can't write host check file at %s :%s " % (self.hostCheckCustomActionsFilePath, err.message))
       traceback.print_exc()
 
@@ -167,7 +167,7 @@ class HostCheckReportFileHandler:
       self.touchFile(self.hostCheckFilePath)
       with open(self.hostCheckFilePath, 'wb') as configfile:
         config.write(configfile)
-    except Exception, err:
+    except (Exception, err):
       logger.error("Can't write host check file at %s :%s " % (self.hostCheckFilePath, err.message))
       traceback.print_exc()
 

@@ -59,7 +59,7 @@ def setup_ranger_hive(upgrade_type = None):
                            recursive_chmod=True
         )
         params.HdfsResource(None, action="execute")
-      except Exception, err:
+      except (Exception, err):
         Logger.exception("Audit directory creation in HDFS for HIVE Ranger plugin failed with error:\n{0}".format(err))
 
     api_version='v2'

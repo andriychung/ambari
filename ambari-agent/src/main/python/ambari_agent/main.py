@@ -195,7 +195,7 @@ def update_log_level(config):
           logging.basicConfig(format=formatstr, level=logging.INFO, filename=AmbariConfig.AmbariConfig.getLogFile())
           logger.setLevel(logging.INFO)
           logger.debug("Newloglevel=logging.INFO")
-    except Exception, err:
+    except (Exception, err):
       logger.info("Default loglevel=DEBUG")
 
 
@@ -214,7 +214,7 @@ def resolve_ambari_config():
     else:
       raise Exception("No config found at {0}, use default".format(configPath))
 
-  except Exception, err:
+  except (Exception, err):
     logger.warn(err)
 
 def check_sudo():
@@ -312,7 +312,7 @@ def stop_agent():
       time.sleep(GRACEFUL_STOP_TRIES_SLEEP)
     logger.info("Agent not going to die gracefully, going to execute kill -9")
     raise Exception("Agent is running")
-  except Exception, err:
+  except (Exception, err):
     #raise
     if pid == -1:
       print ("Agent process is not running")
@@ -347,7 +347,7 @@ def reset_agent(options):
         os.remove(os.path.join(root, name))
       for name in dirs:
         os.rmdir(os.path.join(root, name))
-  except Exception, err:
+  except (Exception, err):
     print("A problem occurred while trying to reset the agent: " + str(err))
     sys.exit(1)
 

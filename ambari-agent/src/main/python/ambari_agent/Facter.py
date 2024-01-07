@@ -72,7 +72,7 @@ class Facter(object):
       else:
         raise Exception("No config found, use default")
 
-    except Exception, err:
+    except (Exception, err):
       log.warn(err)
     return config
 
@@ -503,7 +503,7 @@ class FacterLinux(Facter):
         0x8915,  # SIOCGIFADDR
         struct.pack('256s', ifname[:15])
         )[20:24])
-    except Exception, err:
+    except (Exception, err):
       log.warn("Can't get the IP address for {0}".format(ifname))
     
     return ip_address_by_ifname

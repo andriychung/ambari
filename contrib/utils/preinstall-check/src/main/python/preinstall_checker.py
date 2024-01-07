@@ -175,7 +175,7 @@ def backup_log(filePath):
     backup_file = filePath + "." + timestamp.strftime(simpleformat)
     try:
       shutil.move(filePath, backup_file)
-    except Exception, err:
+    except (Exception, err):
       print('Failed to backup "{0}": {1}'.format(str(filePath), str(err)))
       return '', CODE_WARNING
     return backup_file, CODE_SUCCESS
@@ -263,7 +263,7 @@ def get_ambari_server_property(key):
       if len(tokens) == 2:
         if tokens[0] == key:
           return tokens[1]
-  except Exception, err:
+  except (Exception, err):
     logger.error(str(err))
     return None
   return None

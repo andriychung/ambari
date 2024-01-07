@@ -114,7 +114,7 @@ class TestSecurity(unittest.TestCase):
       httpsconn_mock.read.side_effect = side_eff
       responce = self.cachedHTTPSConnection.request(dummy_request)
       self.fail("Should raise IOError")
-    except Exception, err:
+    except (Exception, err):
       # Expected
       pass
 
@@ -276,7 +276,7 @@ class TestSecurity(unittest.TestCase):
     try:
       man.reqSignCrt()
       self.fail("Expected exception here")
-    except Exception, err:
+    except (Exception, err):
       # expected
       pass
 

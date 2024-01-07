@@ -317,7 +317,7 @@ def get_policycache_service_name(service_name, repo_name, cache_service_list):
             Logger.warning("If service name for {0} is not created on Ranger Admin, then to re-create it delete policy cache file: {1}".format(service_name, policycache_json_file))
             service_name_exist_flag = True
             break
-  except Exception, err:
+  except (Exception, err):
     Logger.error("Error occurred while fetching service name from policy cache file.\nError: {0}".format(err))
 
   return service_name_exist_flag

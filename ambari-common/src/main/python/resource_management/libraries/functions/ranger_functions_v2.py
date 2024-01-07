@@ -348,7 +348,7 @@ class RangeradminV2:
           return None
       else:
         return None
-    except Exception, err:
+    except (Exception, err):
       raise Fail('Error in call for getting Ranger service:\n {0}'.format(err))
 
   @safe_retry(times=5, sleep_time=8, backoff_factor=1.5, err_class=Fail, return_on_fail=None)
@@ -383,7 +383,7 @@ class RangeradminV2:
       else:
         Logger.info('Repository creation failed')
         return None
-    except Exception, err:
+    except (Exception, err):
       raise Fail('Error in call for creating Ranger service:\n {0}'.format(err))
 
   @safe_retry(times=5, sleep_time=8, backoff_factor=1.5, err_class=Fail, return_on_fail=None)
@@ -460,5 +460,5 @@ class RangeradminV2:
       else:
         Logger.info("Service name {0} updation failed on Ranger Admin for service {1}".format(repo_name, component))
         return None
-    except Exception, err:
+    except (Exception, err):
       raise Fail('Error updating service name {0} on Ranger Admin for service {1}.\n Reason - {2}'.format(repo_name, component, err))

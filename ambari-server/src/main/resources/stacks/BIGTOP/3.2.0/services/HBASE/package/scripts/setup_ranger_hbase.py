@@ -62,7 +62,7 @@ def setup_ranger_hbase(upgrade_type=None, service_name="hbase-master"):
                            recursive_chmod=True
         )
         params.HdfsResource(None, action="execute")
-      except Exception, err:
+      except (Exception, err):
         Logger.exception("Audit directory creation in HDFS for HBASE Ranger plugin failed with error:\n{0}".format(err))
 
     api_version = 'v2'

@@ -122,7 +122,7 @@ def server_hostnames(config):
       if (0 == osStat.returncode and 0 != len(out.strip())):
         cached_server_hostnames = arrayFromCsvString(out)
         logger.info("Read server hostname '" + cached_server_hostnames + "' using server:hostname_script")
-    except Exception, err:
+    except (Exception, err):
       logger.info("Unable to execute hostname_script for server hostname. " + str(err))
 
   if not cached_server_hostnames:
